@@ -2,6 +2,9 @@ package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.DriverHelper;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,6 +19,7 @@ import static helpers.AttachmentsHelper.*;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
+@Feature("Issues tests")
 public class GithubUiTests {
 
     String issueTitle = "Test Issue Title Here";
@@ -36,6 +40,8 @@ public class GithubUiTests {
     }
 
     @Test
+    @Story("Github issues userstory")
+    @Description("Verify issue title and body")
     @Tag("web")
     void GithubIssueUiTest() {
         step("Open page with issues", () -> {
