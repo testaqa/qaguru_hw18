@@ -15,4 +15,13 @@ public class ConfigHelper {
     public static boolean isRemoteWebDriver() {
         return System.getProperty("web.remote.driver") != null;
     }
+
+    private static ApiConfig getApiConfig() {
+        return ConfigFactory.create(ApiConfig.class);
+    }
+
+    public static String getBaseURL() {
+        return getApiConfig().baseURL();
+    }
+
 }
