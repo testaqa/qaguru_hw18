@@ -16,8 +16,8 @@ public class GithubApiTests {
     String issueBody = "Some issue description";
 
     @Test
-    void getGithubIssuePlain() {
-        var response = given()
+    void getGithubIssueApiTest() {
+        Issue response = given()
                 .baseUri(ConfigHelper.getBaseURL())
                 .basePath("repos/testaqa/qaguru_hw18")
                 .filter(new AllureRestAssured().setRequestTemplate("request.ftl").setResponseTemplate("response.ftl"))
