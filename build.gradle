@@ -5,6 +5,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
 }
 
 def junitVersion = "5.7.0"
@@ -12,6 +13,7 @@ def selenideVersion = "5.19.0"
 def ownerVersion = "1.0.12"
 def allureVersion = "2.13.8"
 def aspectjweaverVersion = "1.9.6"
+def allureTestopsVersion = "3.28.2"
 
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
@@ -19,6 +21,7 @@ dependencies {
     testImplementation "org.aeonbits.owner:owner:${ownerVersion}"
     testImplementation "io.qameta.allure:allure-selenide:${allureVersion}"
     testImplementation "org.aspectj:aspectjweaver:${aspectjweaverVersion}"
+    testImplementation "io.qameta.allure:allure-ee-junit-platform:${allureTestopsVersion}"
 
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
@@ -34,6 +37,7 @@ test {
 
 tasks.withType(Test) {
     systemProperties += System.properties
+
     systemProperty("junit.jupiter.extensions.autodetection.enabled", "true")
 
     if (System.getProperty("threads") != null) {
