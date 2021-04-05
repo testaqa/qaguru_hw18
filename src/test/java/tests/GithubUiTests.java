@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Condition.have;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
 public class GithubUiTests {
@@ -27,11 +28,15 @@ public class GithubUiTests {
     @Test
     @Tag("web")
     void GithubIssueUiTest() {
-        open("/testaqa/qaguru_hw18/issues/");
-
-        $("div[aria-label='Issues']").$(linkText(issueTitle)).click();
-
-        $(".comment-body p").should(have(text(issueBody)));
+        step("Open page with issues", () -> {
+            open("/testaqa/qaguru_hw18/issues/");
+        });
+        step("Click on issue", () -> {
+            $("div[aria-label='Issues']").$(linkText(issueTitle)).click();
+        });
+        step("Verify issue body", () -> {
+            $(".comment-body p").should(have(text(issueBody)));
+        });
     }
 
 }
