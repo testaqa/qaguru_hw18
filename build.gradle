@@ -6,8 +6,11 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
+def junitVersion = "5.7.0"
 
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
 tasks.withType(JavaCompile) {
