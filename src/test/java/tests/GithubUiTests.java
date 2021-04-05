@@ -1,5 +1,6 @@
 package tests;
 
+import config.ConfigHelper;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.have;
@@ -15,7 +16,7 @@ public class GithubUiTests {
 
     @Test
     void GithubIssueUiTest() {
-        open("https://github.com/testaqa/qaguru_hw18/issues/");
+        open(ConfigHelper.getWebUrl());
 
         $("div[aria-label='Issues']").$(linkText(issueTitle)).click();
 
