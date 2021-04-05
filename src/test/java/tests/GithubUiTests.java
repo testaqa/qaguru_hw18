@@ -1,6 +1,8 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.DriverHelper;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,7 @@ public class GithubUiTests {
     @BeforeAll
     public static void beforeAll() {
         DriverHelper.configureDriver();
+        SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
     @Test
