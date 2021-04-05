@@ -11,4 +11,8 @@ public class ConfigHelper {
     public static String getWebUrl() {
         return getWebConfig().webUrl();
     }
+
+    public static boolean isRemoteWebDriver() {
+        return System.getProperty("web.remote.driver") != null;
+    }
 }

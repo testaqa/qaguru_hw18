@@ -1,6 +1,7 @@
 package tests;
 
-import config.ConfigHelper;
+import helpers.DriverHelper;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.have;
@@ -14,9 +15,14 @@ public class GithubUiTests {
     String issueTitle = "Test Issue Title Here";
     String issueBody = "Some issue description";
 
+    @BeforeAll
+    public static void beforeAll() {
+        DriverHelper.configureDriver();
+    }
+
     @Test
     void GithubIssueUiTest() {
-        open(ConfigHelper.getWebUrl());
+        open("/testaqa/qaguru_hw18/issues/");
 
         $("div[aria-label='Issues']").$(linkText(issueTitle)).click();
 
